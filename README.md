@@ -1,8 +1,9 @@
 ssid-changer.sh
 ===============
 
-*WARNING: this branch of the script contains the ssid-changer version for the gluon 2016.2.x.
-For the current 2017.1 release of Gluon use the branch "lede".*
+*WARNING: this is the old "master" branch of the script and it contains the 
+ssid-changer version for the gluon 2016.2.x. For newer releses use the branches
+"2017.1.x" and "2018.1.x.""*
 
 This script changes the SSID when there is no connection to the selected Gateway.
 
