@@ -24,7 +24,7 @@ FIRST="$(uci -q get ssid-changer.settings.first)"
 
 # the Offline-SSID will start with this prefix use something short to leave space for the nodename
 # (no '~' allowed!)
-PREFIX="$(uci -q get ssid-changer.settings.prefix)"
+PREFIX='update.ffwp.info besuchen!_'
 : ${PREFIX:='FF_Offline_'}
 
 if [ "$(uci -q get ssid-changer.settings.enabled)" = '0' ]; then 
