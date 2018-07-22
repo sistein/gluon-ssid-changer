@@ -40,13 +40,14 @@ SETTINGS_SUFFIX="$(uci -q get ssid-changer.settings.suffix)"
 if [ $SETTINGS_SUFFIX = 'nodename' ]; then
 	SUFFIX="$(uname -n)"
 	# 32 would be possible as well
-	if [ ${#SUFFIX} -gt $((30 - ${#PREFIX})) ]; then
-		# calculate the length of the first part of the node identifier in the offline-ssid
-		HALF=$(( (28 - ${#PREFIX} ) / 2 ))
+	if [ ${#SUFFIX} -gt $((32 - ${#PREFIX})) ]; then
+		# calculate the possible length of the node identifier in the offline-ssid
+		# Since we do not have a lot of Space we only use the end of the nodename
+		SPACE=$(( (31 - ${#PREFIX} ) ))
 		# jump to this charakter for the last part of the name
-		SKIP=$(( ${#SUFFIX} - $HALF ))
+		SKIP=$(( ${#SUFFIX} - $SPACE ))
 		# use the first and last part of the nodename for nodes with long name
-		SUFFIX=${SUFFIX:0:$HALF}...${SUFFIX:$SKIP:${#SUFFIX}}
+		SUFFIX=${SUFFIX:$SPACE:${#SUFFIX}}
 	fi
 elif [ $SETTINGS_SUFFIX = 'mac' ]; then
 	SUFFIX="$(uci -q get network.bat0.macaddr | /bin/sed 's/://g')"
