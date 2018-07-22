@@ -24,7 +24,7 @@ FIRST="$(uci -q get ssid-changer.settings.first)"
 
 # the Offline-SSID will start with this prefix use something short to leave space for the nodename
 # (no '~' allowed!)
-PREFIX='update.ffwp.info besuchen_'
+PREFIX='ffwp.info besuchen_'
 : ${PREFIX:='FF_Offline_'}
 
 if [ "$(uci -q get ssid-changer.settings.enabled)" = '0' ]; then 
@@ -43,7 +43,7 @@ if [ $SETTINGS_SUFFIX = 'nodename' ]; then
 	if [ ${#SUFFIX} -gt $((32 - ${#PREFIX})) ]; then
 		# calculate the possible length of the node identifier in the offline-ssid
 		# Since we do not have a lot of Space we only use the end of the nodename
-		SPACE=$(( (31 - ${#PREFIX} ) ))
+		SPACE=$(( (32 - ${#PREFIX} ) ))
 		# jump to this charakter for the last part of the name
 		SKIP=$(( ${#SUFFIX} - $SPACE ))
 		# use the first and last part of the nodename for nodes with long name
